@@ -11,7 +11,7 @@ async function cadastrar_cliente() {
         cpf: cpf.value
     }
     clientes.push(cliente)
-    await fetch('http://localhost:3000/api/cliente', {
+    await fetch('https://deploy-loja-af.onrender.com/api/cliente', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(cliente)
@@ -20,7 +20,7 @@ async function cadastrar_cliente() {
     buscar_cliente()
 }
 async function buscar_cliente(){
-    const busca = await fetch("http://localhost:3000/api/cliente")
+    const busca = await fetch("https://deploy-loja-af.onrender.com/api/cliente")
     const dados = await busca.json()
     clientes.length = 0
     clientes.push(...dados)
@@ -35,7 +35,7 @@ async function editar_cliente(){
             cpf: cpf.value ?? c.cpf
         }
         let resposta = await fetch(
-            `http://localhost:3000/api/cliente/${c.cpf}`,{
+            `https://deploy-loja-af.onrender.com/api/cliente/${c.cpf}`,{
             method:"PUT",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify(cliente_atualizado)
@@ -48,7 +48,7 @@ async function deletar_cliente(){
     console.log(c)
     if(c){
         let resposta = await fetch(
-            `http://localhost:3000/api/cliente/${c.cpf}`,{
+            `https://deploy-loja-af.onrender.com/api/cliente/${c.cpf}`,{
             method:"DELETE"
         })
         buscar_cliente()
