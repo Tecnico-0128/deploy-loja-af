@@ -6,6 +6,11 @@ app.use(express.json());
 app.use(cors()); 
 
 let clientesServidor = []; 
+
+app.get('/health', (req, res) => {
+    res.json({message: 'Servidor funcionando.', success: true})
+})
+
 app.post('/api/cliente', (req, res) => {
     const { nome, cpf } = req.body;
     if (!nome || !cpf) {
