@@ -11,6 +11,8 @@ app.get('/health', (req, res) => {
     res.json({message: 'Servidor funcionando.', success: true})
 })
 
+// npm ci --build-from-source
+
 app.post('/api/cliente', (req, res) => {
     const { nome, cpf } = req.body;
     if (!nome || !cpf) {
